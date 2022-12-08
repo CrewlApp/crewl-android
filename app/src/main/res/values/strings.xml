@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">CrewlRedesign</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <!-- region Onboarding -->
+    <string name="welcome_to_the_crewl">Crewl’a hoşgeldin!</string>
+    <string name="best_pub_event_in_town">Şehrin en iyi bar etkinliğine katılmak için \ndevam et.</string>
+    <string name="explore_events_in_town">Etrafındaki etkinlikleri keşfet</string>
+    <string name="create_events_for_users_or_join">İnsanlar için etkinlik oluştur veya düzenlenen etkinliklere katıl.</string>
+    <string name="meet_new_people_and_challenge">Yeni insanlarla tanış ve rekabet et</string>
+    <string name="find_people_in_town">Şehirdeki farklı insanları bul, etkinliklerde ekibini oluştur ve puan topla.</string>
+    <string name="earn_special_discounts">Özel indirimler kazan</string>
+    <string name="enjoy_crewl_discounts">Gittiğin barlarda Crewl üyeliğine özel indirimlerin tadını çıkar.</string>
+    <!-- endregion -->
+
+</resources>

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/buttonView"
+    android:background="@color/main_background"
+    android:layout_width="@dimen/_38sdp"
+    android:layout_height="@dimen/_38sdp" >
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/frontLayout"
+        android:layout_width="@dimen/_35sdp"
+        android:layout_height="@dimen/_35sdp"
+        android:elevation="@null"
+        android:background="@drawable/bg_main_button"
+        android:translationZ="@dimen/_20sdp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/frontLayoutIcon"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/_5sdp"
+            android:contentDescription="@null"
+            android:src="@drawable/ic_baseline_keyboard_arrow_right_24"
+            app:tint="@color/main_header" />
+
+        <ProgressBar
+            android:id="@+id/frontLayoutProgress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:indeterminate="true"
+            android:indeterminateTint="@color/main_header"
+            android:theme="@style/ProgressDialogStyle.WithButton"
+            android:visibility="gone"
+            android:padding="@dimen/_8sdp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/backLayout"
+        android:layout_width="@dimen/_35sdp"
+        android:layout_height="@dimen/_35sdp"
+        android:background="@drawable/bg_main_button"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <ImageView
+            android:id="@+id/backLayoutIcon"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/_5sdp"
+            android:contentDescription="@null"
+            android:src="@drawable/ic_baseline_keyboard_arrow_right_24"
+            app:tint="@color/main_header" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <View
+        android:id="@+id/shadow"
+        android:layout_width="@dimen/_35sdp"
+        android:layout_height="@dimen/_35sdp"
+        android:background="@color/black"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

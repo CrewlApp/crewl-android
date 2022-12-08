@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "913222101002",
+    "project_id": "crewl-ac6d9",
+    "storage_bucket": "crewl-ac6d9.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:913222101002:android:3d55ef6414c620cca1d7f3",
+        "android_client_info": {
+          "package_name": "com.alis.crewlredesign"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "913222101002-0q4lb17tugpktg61j5mq1g6ild3a3uqq.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.alis.crewlredesign",
+            "certificate_hash": "eb5942d71e8701df3772a217186d2e35f8204657"
+          }
+        },
+        {
+          "client_id": "913222101002-v2q275gg9jbh4lti90c6l5aqpjce793r.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAmjDJPdBM4z6ZEP5cRUFnpxqxt4iOt-9o"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "913222101002-v2q275gg9jbh4lti90c6l5aqpjce793r.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
