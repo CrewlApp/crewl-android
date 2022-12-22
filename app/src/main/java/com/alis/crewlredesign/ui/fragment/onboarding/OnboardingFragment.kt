@@ -1,11 +1,10 @@
 package com.alis.crewlredesign.ui.fragment.onboarding
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.view.ViewGroup.LayoutParams.WRAP_CONTENT
+import android.view.animation.AccelerateInterpolator
+import android.view.animation.DecelerateInterpolator
 import android.widget.ImageView
 import android.widget.LinearLayout
 import androidx.core.content.ContextCompat
@@ -22,12 +21,14 @@ import com.alis.crewlredesign.databinding.FragmentOnboardingBinding
 import com.alis.crewlredesign.ui.fragment.onboarding.adapter.OnboardingItemAdapter
 import com.alis.crewlredesign.utils.autoCleared
 import com.alis.crewlredesign.utils.navigateSafely
+import com.yuyakaido.android.cardstackview.*
 
-class OnboardingFragment : BaseFragment<OnboardingFragmentViewModel, FragmentOnboardingBinding>() {
+class OnboardingFragment : BaseFragment<OnboardingFragmentViewModel, FragmentOnboardingBinding>(), CardStackListener {
     private var binding: FragmentOnboardingBinding by autoCleared()
     private val viewModel: OnboardingFragmentViewModel by viewModels()
 
-    private lateinit var onboardingItemAdapter: OnboardingItemAdapter
+    private val manager by lazy { CardStackLayoutManager(context, this) }
+    private val adapter by lazy { OnboardingItemAdapter() }
 
     override fun getViewModel(): Class<OnboardingFragmentViewModel> = OnboardingFragmentViewModel::class.java
 
@@ -39,106 +40,92 @@ class OnboardingFragment : BaseFragment<OnboardingFragmentViewModel, FragmentOnb
 
     override fun setUIAction() {
         setOnboardingItems()
-        setIndicators()
-        setCurrentIndicator(position = 0)
     }
 
     private fun setOnboardingItems() {
-        onboardingItemAdapter = OnboardingItemAdapter(
+        adapter.setItems(
             listOf(
                 OnboardingItem(
-                    emote = R.drawable.emote_rabbit_cigarette,
+                    image = R.drawable.image_onboarding_welcome,
                     title = getString(R.string.welcome_to_the_crewl),
                     description = getString(R.string.best_pub_event_in_town)
                 ),
                 OnboardingItem(
-                    emote = R.drawable.emote_rabbit_event,
+                    image = R.drawable.emote_rabbit_event,
                     title = getString(R.string.explore_events_in_town),
                     description = getString(R.string.create_events_for_users_or_join)
                 ),
                 OnboardingItem(
-                    emote = R.drawable.emote_bears_meet_people,
+                    image = R.drawable.emote_bears_meet_people,
                     title = getString(R.string.meet_new_people_and_challenge),
                     description = getString(R.string.find_people_in_town)
                 ),
                 OnboardingItem(
-                    emote = R.drawable.emote_fox_discount,
+                    image = R.drawable.emote_fox_discount,
+                    title = getString(R.string.earn_special_discounts),
+                    description = getString(R.string.enjoy_crewl_discounts)
+                ),
+                OnboardingItem(
+                    image = R.drawable.emote_fox_discount,
                     title = getString(R.string.earn_special_discounts),
                     description = getString(R.string.enjoy_crewl_discounts)
                 )
             )
         )
 
+        manager.apply {
+            setStackFrom(StackFrom.BottomAndRight)
+            setVisibleCount(5)
+            setTranslationInterval(5.5f)
+            setScaleInterval(1.0f)
+            setMaxDegree(0.0f)
+            setCanScrollHorizontal(true)
+            setCanScrollVertical(false)
+        }
+
         binding.apply {
-            onboardingViewPager.adapter = onboardingItemAdapter
-            onboardingViewPager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
-                override fun onPageSelected(position: Int) {
-                    super.onPageSelected(position)
-                    setCurrentIndicator(position = position)
-                }
+            onboardingCardStack.adapter = adapter
+            onboardingCardStack.layoutManager = manager
 
-                override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {
-                    super.onPageScrolled(position, positionOffset, positionOffsetPixels)
-                    if (onboardingViewPager.currentItem + 1 < onboardingItemAdapter.itemCount)
-                        onboardingButton.visibility = View.INVISIBLE
-                    else
-                        onboardingButton.visibility = View.VISIBLE
-                }
-            })
-            (onboardingViewPager.getChildAt(0) as RecyclerView).overScrollMode = RecyclerView.OVER_SCROLL_NEVER
+            leftButton.setOnClickListener {
+                val setting = RewindAnimationSetting.Builder().setDirection(Direction.Bottom)
+                    .setDuration(Duration.Normal.duration).setInterpolator(DecelerateInterpolator())
+                    .build()
 
-            onboardingButton.setOnClickListener {
-                if (onboardingViewPager.currentItem + 1 < onboardingItemAdapter.itemCount) {
-                    onboardingViewPager.currentItem += 1
-                }
+                manager.setRewindAnimationSetting(setting)
+                onboardingCardStack.rewind()
             }
-        }
-    }
 
-    private fun setIndicators() {
-        val indicators = arrayOfNulls<ImageView>(onboardingItemAdapter.itemCount)
-        val layoutParams: LinearLayout.LayoutParams = LinearLayout.LayoutParams(WRAP_CONTENT, WRAP_CONTENT)
-        layoutParams.setMargins(5, 0, 5, 0)
+            rightButton.setOnClickListener {
+                val setting = SwipeAnimationSetting.Builder().setDirection(Direction.Right)
+                    .setDuration(Duration.Normal.duration).setInterpolator(AccelerateInterpolator())
+                    .build()
 
-        indicators.indices.forEach { item ->
-            indicators[item] = ImageView(BaseApplication.getContext())
-            indicators[item]?.let { image ->
-                image.setImageDrawable(
-                    ContextCompat.getDrawable(
-                        BaseApplication.getContext(),
-                        R.drawable.item_indicator_passive
-                    )
-                )
-                image.layoutParams = layoutParams
-                binding.onboardingIndicator.addView(image)
+                manager.setSwipeAnimationSetting(setting)
+                onboardingCardStack.swipe()
             }
-        }
-    }
-
-    private fun setCurrentIndicator(position: Int) {
-        val childCount = binding.onboardingIndicator.childCount
-
-        for (i in 0 until childCount) {
-            val image = binding.onboardingIndicator.getChildAt(i) as ImageView
-
-            if (i == position)
-                image.setImageDrawable(
-                    ContextCompat.getDrawable(
-                        BaseApplication.getContext(),
-                        R.drawable.item_indicator_active
-                    )
-                )
-            else
-                image.setImageDrawable(
-                    ContextCompat.getDrawable(
-                        BaseApplication.getContext(),
-                        R.drawable.item_indicator_passive
-                    )
-                )
         }
     }
 
     override fun navigate(direction: NavDirections) {
         findNavController().navigateSafely(direction = direction)
+    }
+
+    override fun onCardDragging(direction: Direction?, ratio: Float) {
+    }
+
+    override fun onCardSwiped(direction: Direction?) {
+    }
+
+    override fun onCardRewound() {
+    }
+
+    override fun onCardCanceled() {
+    }
+
+    override fun onCardAppeared(view: View?, position: Int) {
+    }
+
+    override fun onCardDisappeared(view: View?, position: Int) {
     }
 }

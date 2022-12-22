@@ -1,43 +1,74 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/main_background"
-    android:gravity="center"
-    android:padding="@dimen/_20sdp"
-    android:orientation="vertical">
+    android:layout_height="match_parent">
 
-    <ImageView
-        android:id="@+id/imageOnboarding"
-        android:layout_width="@dimen/_170sdp"
-        android:layout_height="@dimen/_170sdp"
-        android:contentDescription="@null"
-        android:src="@color/black" />
-
-    <TextView
-        android:id="@+id/titleOnboarding"
-        android:layout_width="wrap_content"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/_35sdp"
-        android:fontFamily="@font/inter_bold"
-        android:gravity="center"
-        android:letterSpacing="@dimen/letter_spacing_default"
-        android:textColor="@color/main_header"
-        android:textSize="@dimen/_15sdp"
-        tools:text="@string/welcome_to_the_crewl" />
+        android:layout_margin="@dimen/_35sdp"
+        android:background="@drawable/bg_item_onboarding"
+        android:paddingHorizontal="@dimen/_5sdp"
+        android:paddingVertical="@dimen/_15sdp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-    <TextView
-        android:id="@+id/descriptionOnboarding"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/_5sdp"
-        android:fontFamily="@font/inter_medium"
-        android:gravity="center"
-        android:letterSpacing="@dimen/letter_spacing_default"
-        android:lineSpacingExtra="@dimen/_5sdp"
-        android:textColor="@color/main_subtitle"
-        android:textSize="@dimen/_11sdp"
-        tools:text="@string/best_pub_event_in_town" />
+        <ImageView
+            android:id="@+id/imageOnboarding"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_300sdp"
+            android:layout_marginHorizontal="@dimen/_10sdp"
+            android:foreground="@drawable/bg_image_border"
+            android:contentDescription="@null"
+            android:scaleType="centerCrop"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:src="@color/black"
+            tools:src="@drawable/image_onboarding_welcome" />
 
-</LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/titleOnboarding"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:gravity="center"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/imageOnboarding">
+
+            <TextView
+                android:id="@+id/titleOnboarding_text"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_35sdp"
+                android:background="@drawable/bg_item_onboarding_title"
+                android:gravity="center"
+                android:textColor="@color/main_header"
+                android:textSize="@dimen/_12ssp"
+                android:textStyle="bold"
+                tools:text="@string/welcome_to_the_crewl" />
+
+            <TextView
+                android:id="@+id/descriptionOnboarding_text"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_50sdp"
+                android:layout_marginBottom="@dimen/_2sdp"
+                android:background="@drawable/bg_item_onboarding_description"
+                android:gravity="center"
+                android:textColor="@color/main_subtitle"
+                android:textSize="@dimen/_11ssp"
+                tools:text="@string/best_pub_event_in_town" />
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+

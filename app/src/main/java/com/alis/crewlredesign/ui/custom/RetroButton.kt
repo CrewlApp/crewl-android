@@ -32,6 +32,7 @@ class RetroButton : LinearLayout {
         binding.frontLayoutIcon.setImageResource(resourceId)
     }
 
+    /*
     override fun setPressed(pressed: Boolean) {
         super.setPressed(pressed)
         if (pressed) {
@@ -45,6 +46,7 @@ class RetroButton : LinearLayout {
             binding.buttonView.alpha = 0.5f
         }
     }
+     */
 
     override fun dispatchSetPressed(pressed: Boolean) {
         super.dispatchSetPressed(pressed)

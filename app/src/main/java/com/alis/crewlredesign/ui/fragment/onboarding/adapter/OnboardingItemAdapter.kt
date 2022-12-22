@@ -9,28 +9,37 @@ import androidx.recyclerview.widget.RecyclerView
 import com.alis.crewlredesign.R
 import com.alis.crewlredesign.data.onboarding.OnboardingItem
 
-class OnboardingItemAdapter(private val onboardingItems: List<OnboardingItem>): RecyclerView.Adapter<OnboardingItemAdapter.OnboardingItemViewHolder>() {
-    inner class OnboardingItemViewHolder(view: View): RecyclerView.ViewHolder(view) {
-        private val emote: ImageView = view.findViewById(R.id.imageOnboarding)
-        private val title: TextView = view.findViewById(R.id.titleOnboarding)
-        private val description: TextView = view.findViewById(R.id.descriptionOnboarding)
+class OnboardingItemAdapter : RecyclerView.Adapter<OnboardingItemAdapter.OnboardingViewHolder>() {
+    private lateinit var onboardingItems: MutableList<OnboardingItem>
 
-        fun bind(onboardingItem: OnboardingItem) {
-            emote.setImageResource(onboardingItem.emote)
-            title.text = onboardingItem.title
-            description.text = onboardingItem.description
-        }
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): OnboardingViewHolder {
+        val inflater = LayoutInflater.from(parent.context)
+        return OnboardingViewHolder(inflater.inflate(R.layout.item_onboarding, parent, false))
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): OnboardingItemViewHolder {
-        return OnboardingItemViewHolder(
-            LayoutInflater.from(parent.context).inflate(R.layout.item_onboarding, parent, false)
-        )
+    override fun onBindViewHolder(holder: OnboardingViewHolder, position: Int) {
+        val onboardingItem = onboardingItems[position]
+
+        holder.title.text = onboardingItem.title
+        holder.description.text = onboardingItem.description
+        holder.image.setImageResource(onboardingItem.image)
     }
 
-    override fun onBindViewHolder(holder: OnboardingItemViewHolder, position: Int) {
-        holder.bind(onboardingItems[position])
+    override fun getItemCount(): Int {
+        return onboardingItems.size
     }
 
-    override fun getItemCount(): Int = onboardingItems.size
+    fun setItems(items: List<OnboardingItem>) {
+        this.onboardingItems = items as MutableList<OnboardingItem>
+    }
+
+    fun getItems(): List<OnboardingItem> {
+        return onboardingItems
+    }
+
+    class OnboardingViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+        val title: TextView = view.findViewById(R.id.titleOnboarding_text)
+        var description: TextView = view.findViewById(R.id.descriptionOnboarding_text)
+        var image: ImageView = view.findViewById(R.id.imageOnboarding)
+    }
 }

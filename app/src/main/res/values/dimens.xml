@@ -2,6 +2,7 @@
 <resources>
     <!--region Letter Spacing Dimensions -->
     <dimen name="letter_spacing_default">-0.01</dimen>
+    <dimen name="letter_spacing_max">-0.02</dimen>
     <!--endregion Line Spacing Dimensions -->
 
     <!--region Line Spacing Dimensions -->

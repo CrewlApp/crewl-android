@@ -7,37 +7,34 @@
     android:background="@color/main_background"
     tools:context=".ui.fragment.onboarding.OnboardingFragment">
 
-    <androidx.viewpager2.widget.ViewPager2
-        android:id="@+id/onboardingViewPager"
+    <com.yuyakaido.android.cardstackview.CardStackView
+        android:id="@+id/onboardingCardStack"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginTop="@dimen/_95sdp"
-        app:layout_constraintBottom_toTopOf="@id/onboardingIndicator"
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true"
+        android:layout_centerInParent="true"
+        android:clipToPadding="false"
+        android:paddingBottom="@dimen/_20sdp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <LinearLayout
-        android:id="@+id/onboardingIndicator"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="@dimen/_20sdp"
-        android:layout_marginBottom="@dimen/_60sdp"
-        android:padding="@dimen/_5sdp"
-        android:orientation="horizontal"
-        app:layout_constraintTop_toBottomOf="@id/onboardingViewPager"
-        app:layout_constraintBottom_toTopOf="@id/onboardingButton"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
     <com.alis.crewlredesign.ui.custom.RetroButton
-        android:id="@+id/onboardingButton"
-        android:clipToPadding="false"
+        android:id="@+id/rightButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/_25sdp"
-        android:visibility="invisible"
+        android:layout_margin="@dimen/_30sdp"
+        android:clipToPadding="false"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
+
+    <com.alis.crewlredesign.ui.custom.RetroButton
+        android:id="@+id/leftButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/_30sdp"
+        android:clipToPadding="false"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
