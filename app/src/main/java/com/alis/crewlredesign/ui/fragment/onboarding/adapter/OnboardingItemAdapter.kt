@@ -10,11 +10,16 @@ import com.alis.crewlredesign.R
 import com.alis.crewlredesign.data.onboarding.OnboardingItem
 
 class OnboardingItemAdapter : RecyclerView.Adapter<OnboardingItemAdapter.OnboardingViewHolder>() {
+    companion object {
+        const val FIRST_ITEM = 0
+        const val LAST_ITEM = 4
+    }
+
     private lateinit var onboardingItems: MutableList<OnboardingItem>
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): OnboardingViewHolder {
         val inflater = LayoutInflater.from(parent.context)
-        return OnboardingViewHolder(inflater.inflate(R.layout.item_onboarding, parent, false))
+        return OnboardingViewHolder(inflater.inflate(R.layout.item_card_onboarding, parent, false))
     }
 
     override fun onBindViewHolder(holder: OnboardingViewHolder, position: Int) {

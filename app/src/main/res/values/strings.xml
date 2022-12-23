@@ -5,7 +5,7 @@
 
     <!-- region Onboarding -->
     <string name="welcome_to_the_crewl">Crewl’a hoşgeldin!</string>
-    <string name="best_pub_event_in_town">Şehrindeki en iyi bar etkinliğine katıl ve \nhikayeyi gerçek hayata taşı.</string>
+    <string name="best_pub_event_in_town">Şehrindeki en iyi bar etkinliğine katıl ve hikayeyi gerçek hayata taşı.</string>
     <string name="explore_events_in_town">Etrafındaki etkinlikleri keşfet</string>
     <string name="create_events_for_users_or_join">İnsanlar için etkinlik oluştur veya düzenlenen etkinliklere katıl.</string>
     <string name="meet_new_people_and_challenge">Yeni insanlarla tanış ve rekabet et</string>
