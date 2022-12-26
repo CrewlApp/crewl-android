@@ -2,8 +2,6 @@ package com.alis.crewlredesign.ui.fragment.onboarding
 
 import android.os.Bundle
 import android.view.View
-import android.view.View.GONE
-import android.view.View.VISIBLE
 import android.view.animation.AccelerateInterpolator
 import android.view.animation.DecelerateInterpolator
 import androidx.core.view.doOnPreDraw
@@ -14,6 +12,7 @@ import com.alis.crewlredesign.core.BaseFragment
 import com.alis.crewlredesign.databinding.FragmentOnboardingBinding
 import com.alis.crewlredesign.ui.fragment.onboarding.adapter.OnboardingItemAdapter
 import com.alis.crewlredesign.ui.fragment.onboarding.adapter.OnboardingItemAdapter.Companion.FIRST_ITEM
+import com.alis.crewlredesign.ui.fragment.onboarding.adapter.OnboardingItemAdapter.Companion.LAST_ITEM
 import com.alis.crewlredesign.utils.autoCleared
 import com.alis.crewlredesign.utils.navigateSafely
 import com.yuyakaido.android.cardstackview.*
@@ -56,8 +55,8 @@ class OnboardingFragment : BaseFragment<OnboardingFragmentViewModel, FragmentOnb
             setTranslationInterval(5.0f)
             setScaleInterval(1.0f)
             setMaxDegree(0.0f)
-            setCanScrollHorizontal(true)
-            setCanScrollVertical(false)
+            manager.setCanScrollHorizontal(true)
+            manager.setCanScrollVertical(false)
         }
 
         binding.apply {
@@ -94,18 +93,36 @@ class OnboardingFragment : BaseFragment<OnboardingFragmentViewModel, FragmentOnb
 
     override fun onCardAppeared(view: View?, position: Int) {
         binding.apply {
-            leftButton.visibility = if (position == FIRST_ITEM) GONE else VISIBLE
+            when (position) {
+                FIRST_ITEM -> {
+                    leftButton.apply {
+                        alpha = 0.5f
+                        isEnabled = false
+                    }
 
-            rightButton.setOnClickListener {
-                if (position == 4) {
-                    navigate(direction = OnboardingFragmentDirections.toPreLogin())
-                } else {
-                    val setting = SwipeAnimationSetting.Builder().setDirection(Direction.Left)
-                        .setDuration(Duration.Normal.duration).setInterpolator(AccelerateInterpolator())
-                        .build()
+                    rightButton.setOnClickListener {
+                        val setting = SwipeAnimationSetting.Builder().setDirection(Direction.valueOf(Direction.HORIZONTAL.toString()))
+                            .setDuration(Duration.Normal.duration).setInterpolator(AccelerateInterpolator())
+                            .build()
 
-                    manager.setSwipeAnimationSetting(setting)
-                    onboardingCardStack.swipe()
+                        manager.setSwipeAnimationSetting(setting)
+                        onboardingCardStack.swipe()
+                    }
+                }
+                LAST_ITEM -> {
+                    manager.setCanScrollHorizontal(false)
+
+                    rightButton.setOnClickListener {
+                        navigate(direction = OnboardingFragmentDirections.toPreLogin())
+                    }
+                }
+                else -> {
+                    manager.setCanScrollHorizontal(true)
+
+                    leftButton.apply {
+                        alpha = 1f
+                        isEnabled = true
+                    }
                 }
             }
         }

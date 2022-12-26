@@ -28,6 +28,8 @@ class PreLoginFragment : BaseFragment<PreLoginFragmentViewModel, FragmentPrelogi
     }
 
     override fun setUIAction() {
+        binding.leftButton.scaleX = -1.0f
+
         binding.leftButton.setOnClickListener {
             findNavController().popBackStack()
         }
