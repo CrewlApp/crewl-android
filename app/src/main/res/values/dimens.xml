@@ -2,6 +2,7 @@
 <resources>
     <!--region Letter Spacing Dimensions -->
     <dimen name="letter_spacing_default">-0.01</dimen>
+    <dimen name="letter_spacing_max">-0.02</dimen>
     <!--endregion Line Spacing Dimensions -->
 
     <!--region Line Spacing Dimensions -->
@@ -155,5 +156,7 @@
     <!-- region Button Sizes -->
     <dimen name="button_55">55dp</dimen>
     <dimen name="button_200">200dp</dimen>
+    <dimen name="margin_300">300dp</dimen>
+    <dimen name="margin_400">400dp</dimen>
     <!-- endregion Button Sizes -->
 </resources>

@@ -40,9 +40,6 @@ class RetroButton : LinearLayout {
         } else {
             binding.frontLayout.visibility = VISIBLE
             binding.shadow.visibility = VISIBLE
-            binding.frontLayoutProgress.visibility = VISIBLE
-            binding.frontLayoutIcon.visibility = GONE
-            binding.buttonView.alpha = 0.5f
         }
     }
 

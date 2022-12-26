@@ -1,5 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="../../../../layout/custom_preview.xml" value="0.26197916666666665" />
+        <entry key="app/src/main/res/drawable/bg_image_border.xml" value="0.241" />
+        <entry key="app/src/main/res/drawable/bg_item_onboarding.xml" value="0.241" />
+        <entry key="app/src/main/res/drawable/bg_item_onboarding_description.xml" value="0.241" />
+        <entry key="app/src/main/res/drawable/bg_item_onboarding_title.xml" value="0.241" />
+        <entry key="app/src/main/res/drawable/bg_main_button.xml" value="0.242" />
+        <entry key="app/src/main/res/drawable/bg_splash.xml" value="0.242" />
+        <entry key="app/src/main/res/drawable/ic_baseline_keyboard_arrow_right_24.xml" value="0.242" />
+        <entry key="app/src/main/res/drawable/ic_img_onb.xml" value="0.242" />
+        <entry key="app/src/main/res/layout-large/item_onboarding.xml" value="0.3587002992731937" />
+        <entry key="app/src/main/res/layout-normal/item_onboarding.xml" value="0.43697916666666664" />
+        <entry key="app/src/main/res/layout-small/item_onboarding.xml" value="1.0481171548117154" />
+        <entry key="app/src/main/res/layout-sw320dp/item_onboarding.xml" value="0.35854700854700855" />
+        <entry key="app/src/main/res/layout-sw480dp/item_onboarding.xml" value="0.40931372549019607" />
+        <entry key="app/src/main/res/layout-xlarge/item_onboarding.xml" value="0.327734375" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.2359375" />
+        <entry key="app/src/main/res/layout/custom_retro_button_view.xml" value="1.0" />
+        <entry key="app/src/main/res/layout/fragment_login.xml" value="0.1935897435897436" />
+        <entry key="app/src/main/res/layout/fragment_onboarding.xml" value="0.25271739130434784" />
+        <entry key="app/src/main/res/layout/fragment_prelogin.xml" value="0.19273504273504274" />
+        <entry key="app/src/main/res/layout/item_card_onboarding.xml" value="0.3576923076923077" />
+        <entry key="app/src/main/res/layout/item_onboarding.xml" value="0.34315503173164097" />
+      </map>
+    </option>
+  </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
